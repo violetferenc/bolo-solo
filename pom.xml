@@ -438,6 +438,8 @@
                     </httpConnector>
                     <stopKey>stop</stopKey>
                     <stopPort>4501</stopPort>
+                    <!-- 在指定时间间隔内扫描web应用是否改变，若存在改变则自动热部署，默认为0表示禁用热部署，若大于0则表示启用 -->
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
                     <webAppConfig>
                         <contextPath>/</contextPath>
                     </webAppConfig>

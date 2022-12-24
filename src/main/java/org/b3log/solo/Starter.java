@@ -178,10 +178,17 @@ public final class Starter {
         }
 
         final int port = Integer.valueOf(portArg);
+        final String jettyConfigurationFileName = Latkes.getLocalProperty("jettyConfigurationFileName");
         final Server server = new Server(port);
         final WebAppContext root = new WebAppContext();
         root.setParentLoaderPriority(true); // Use parent class loader
         root.setContextPath("/");
+
+        if (!"null".equals(jettyConfigurationFileName)) {
+            // 使用local.properties里jettyConfigurationFileName参数指定的jetty配置文件
+            root.setDefaultsDescriptor(webappDirLocation + "/WEB-INF/" + jettyConfigurationFileName);
+        }
+
         root.setDescriptor(webappDirLocation + "/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
         server.setHandler(root);
