@@ -107,7 +107,11 @@ admin.pageList = {
 
                     var pageIcon = '';
                     if (pages[i].pageIcon !== '') {
-                      pageIcon = "<img class='navigation-icon' src='" + pages[i].pageIcon + "'/> ";
+                        if (pages[i].pageIcon.indexOf('http') != -1) {
+                            pageIcon = "<img class='navigation-icon' src='" + pages[i].pageIcon + "'/> ";
+                        } else {
+                            pageIcon = "<i class='fa fa-" + pages[i].pageIcon + " faa-horizontal' aria-hidden='true' style='margin-right: 5px'></i>";
+                        }
                     }
                     pageData[i].pageTitle = pageIcon + "<a class='no-underline' href='" + pages[i].pagePermalink + "' target='_blank'>" +
                             pages[i].pageTitle + "</a>";
