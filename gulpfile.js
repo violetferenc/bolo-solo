@@ -32,6 +32,8 @@ const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename')
 const autoprefixer = require('gulp-autoprefixer')
 const del = require('del')
+// dev：开发环境，不进行js压缩   production：生产环境，进行js压缩
+const environment = 'production';
 
 function sassSkinProcess () {
   return gulp.src('./src/main/webapp/skins/*/css/*.scss').
@@ -59,14 +61,20 @@ function sassCommonProcess () {
 
 function minJS () {
   // minify js
-  return gulp.src(['./src/main/webapp/js/*.js', '!./src/main/webapp/js/*.min.js']).
-  pipe(rename({suffix: '.min'})).
-  pipe(terser({
-    output: {
-      ascii_only: true,
-    },
-  })).
-  pipe(gulp.dest('./src/main/webapp/js/'))
+  if (environment === 'dev') {
+    return gulp.src(['./src/main/webapp/js/*.js', '!./src/main/webapp/js/*.min.js']).
+    pipe(rename({suffix: '.min'})).
+    pipe(gulp.dest('./src/main/webapp/js/'))
+  } else {
+    return gulp.src(['./src/main/webapp/js/*.js', '!./src/main/webapp/js/*.min.js']).
+    pipe(rename({suffix: '.min'})).
+    pipe(terser({
+      output: {
+        ascii_only: true,
+      },
+    })).
+    pipe(gulp.dest('./src/main/webapp/js/'))
+  }
 }
 
 function miniAdmin () {
@@ -93,15 +101,20 @@ function miniAdmin () {
     './src/main/webapp/js/admin/about.js',
     './src/main/webapp/js/admin/toolBox.js',
     './src/main/webapp/js/admin/usite.js']
-  return gulp.src(jsJqueryUpload).
-  pipe(terser({
-    output: {
-      ascii_only: true,
-    },
-  })).
-  pipe(concat('admin.min.js')).
-  pipe(gulp.dest('./src/main/webapp/js/admin'))
-
+  if (environment === 'dev') {
+    return gulp.src(jsJqueryUpload).
+    pipe(concat('admin.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/admin'))
+  } else {
+    return gulp.src(jsJqueryUpload).
+    pipe(terser({
+      output: {
+        ascii_only: true,
+      },
+    })).
+    pipe(concat('admin.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/admin'))
+  }
 }
 
 function miniAdminLibs () {
@@ -111,16 +124,20 @@ function miniAdminLibs () {
     './src/main/webapp/js/lib/jquery/jquery.bowknot.min.js',
     './src/main/webapp/js/lib/jquery/jquery.showtips.js',
     './src/main/webapp/js/lib/jquery/jquery.cookie.min.js' ]
-  return gulp.src(jsJqueryUpload).
-  pipe(terser({
-    output: {
-      ascii_only: true,
-    },
-  })).
-  // https://github.com/b3log/solo/issues/12522
-  pipe(concat('admin-lib.min.js')).
-  pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
-
+  if (environment === 'dev') {
+    return gulp.src(jsJqueryUpload).
+    pipe(concat('admin-lib.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
+  } else {
+    return gulp.src(jsJqueryUpload).
+    pipe(terser({
+      output: {
+        ascii_only: true,
+      },
+    })).
+    pipe(concat('admin-lib.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
+  }
 }
 
 function miniPjax () {
@@ -129,26 +146,40 @@ function miniPjax () {
     './src/main/webapp/js/lib/jquery/jquery-3.1.0.min.js',
     './src/main/webapp/js/lib/jquery/jquery.pjax.js',
     './src/main/webapp/js/lib/nprogress/nprogress.js']
-  return gulp.src(jsPjax).
-  pipe(terser({
-    output: {
-      ascii_only: true,
-    },
-  })).
-  pipe(concat('pjax.min.js')).
-  pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
+  if (environment === 'dev') {
+    return gulp.src(jsPjax).
+    pipe(concat('pjax.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
+  } else {
+    return gulp.src(jsPjax).
+    pipe(terser({
+      output: {
+        ascii_only: true,
+      },
+    })).
+    pipe(concat('pjax.min.js')).
+    pipe(gulp.dest('./src/main/webapp/js/lib/compress/'))
+  }
+
 }
 
 function minSkinJS () {
   // minify js
-  return gulp.src(['./src/main/webapp/skins/*/js/*.js', '!./src/main/webapp/skins/*/js/*.min.js']).
-  pipe(rename({suffix: '.min'})).
-  pipe(terser({
-    output: {
-      ascii_only: true,
-    },
-  })).
-  pipe(gulp.dest('./src/main/webapp/skins/'))
+  if (environment === 'dev') {
+    return gulp.src(['./src/main/webapp/skins/*/js/*.js', '!./src/main/webapp/skins/*/js/*.min.js']).
+    pipe(rename({suffix: '.min'})).
+    pipe(gulp.dest('./src/main/webapp/skins/'))
+  } else {
+    return gulp.src(['./src/main/webapp/skins/*/js/*.js', '!./src/main/webapp/skins/*/js/*.min.js']).
+    pipe(rename({suffix: '.min'})).
+    pipe(terser({
+      output: {
+        ascii_only: true,
+      },
+    })).
+    pipe(gulp.dest('./src/main/webapp/skins/'))
+  }
+
 }
 
 function cleanProcess () {
