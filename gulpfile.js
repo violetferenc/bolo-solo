@@ -45,11 +45,6 @@ function sassSkinProcess () {
   pipe(gulp.dest('./src/main/webapp/skins/'))
 }
 
-function sassWatch () {
-  gulp.watch(['./src/main/webapp/skins/*/css/*.scss'], sassSkinProcess)
-  gulp.watch(['./src/main/webapp/scss/*.scss'], sassCommonProcess)
-}
-
 function sassCommonProcess () {
   return gulp.src('./src/main/webapp/scss/*.scss').
   pipe(sass({
@@ -62,11 +57,9 @@ function sassCommonProcess () {
   pipe(gulp.dest('./src/main/webapp/scss/'))
 }
 
-gulp.task('watch', gulp.series(sassWatch))
-
 function minJS () {
   // minify js
-  return gulp.src('./src/main/webapp/js/*.js').
+  return gulp.src(['./src/main/webapp/js/*.js', '!./src/main/webapp/js/*.min.js']).
   pipe(rename({suffix: '.min'})).
   pipe(terser({
     output: {
@@ -148,7 +141,7 @@ function miniPjax () {
 
 function minSkinJS () {
   // minify js
-  return gulp.src('./src/main/webapp/skins/*/js/*.js').
+  return gulp.src(['./src/main/webapp/skins/*/js/*.js', '!./src/main/webapp/skins/*/js/*.min.js']).
   pipe(rename({suffix: '.min'})).
   pipe(terser({
     output: {
@@ -159,10 +152,63 @@ function minSkinJS () {
 }
 
 function cleanProcess () {
+  // 删除旧的js压缩文件
   return del([
     './src/main/webapp/js/*.min.js',
+    './src/main/webapp/js/admin/*.min.js',
+    './src/main/webapp/js/lib/compress/*.min.js',
     './src/main/webapp/skins/*/js/*.min.js'])
 }
+
+function sassAndJsWatch () {
+  // 监控scss文件修改并自动编译成css
+  gulp.watch(['./src/main/webapp/skins/*/css/*.scss'], sassSkinProcess)
+  gulp.watch(['./src/main/webapp/scss/*.scss'], sassCommonProcess)
+
+
+  // 监控js文件（不包括min.js）修改并自动打包压缩
+  gulp.watch(['./src/main/webapp/skins/*/js/*.js', '!./src/main/webapp/skins/*/js/*.min.js'], minSkinJS)
+  gulp.watch(['./src/main/webapp/js/*.js', '!./src/main/webapp/js/*.min.js'], minJS)
+
+  let jsFiles = [
+    './src/main/webapp/js/lib/jquery/jquery-3.1.0.min.js',
+    './src/main/webapp/js/lib/jquery/jquery.pjax.js',
+    './src/main/webapp/js/lib/nprogress/nprogress.js']
+  gulp.watch(jsFiles, miniPjax)
+
+  jsFiles = [
+    './src/main/webapp/js/admin/admin.js',
+    './src/main/webapp/js/admin/editor.js',
+    './src/main/webapp/js/admin/tablePaginate.js',
+    './src/main/webapp/js/admin/article.js',
+    './src/main/webapp/js/admin/comment.js',
+    './src/main/webapp/js/admin/articleList.js',
+    './src/main/webapp/js/admin/draftList.js',
+    './src/main/webapp/js/admin/pageList.js',
+    './src/main/webapp/js/admin/others.js',
+    './src/main/webapp/js/admin/linkList.js',
+    './src/main/webapp/js/admin/preference.js',
+    './src/main/webapp/js/admin/themeList.js',
+    './src/main/webapp/js/admin/pluginList.js',
+    './src/main/webapp/js/admin/userList.js',
+    './src/main/webapp/js/admin/categoryList.js',
+    './src/main/webapp/js/admin/commentList.js',
+    './src/main/webapp/js/admin/plugin.js',
+    './src/main/webapp/js/admin/main.js',
+    './src/main/webapp/js/admin/about.js',
+    './src/main/webapp/js/admin/toolBox.js',
+    './src/main/webapp/js/admin/usite.js']
+  gulp.watch(jsFiles, miniAdmin)
+
+  jsFiles = [
+    './src/main/webapp/js/lib/jquery/jquery.min.js',
+    './src/main/webapp/js/lib/jquery/jquery.bowknot.min.js',
+    './src/main/webapp/js/lib/jquery/jquery.showtips.js',
+    './src/main/webapp/js/lib/jquery/jquery.cookie.min.js' ]
+  gulp.watch(jsFiles, miniAdminLibs)
+}
+
+gulp.task('watch', gulp.series(sassAndJsWatch))
 
 gulp.task('default',
     gulp.series(cleanProcess, sassSkinProcess, sassCommonProcess,
