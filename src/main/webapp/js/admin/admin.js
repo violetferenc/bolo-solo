@@ -43,6 +43,11 @@ var Admin = function () {
 
 $.extend(Admin.prototype, {
     /**
+     * 菜单是否已被人工选择打开
+     */
+    menuManualOpened: false,
+
+    /**
      * @description  登出
      */
     logout: function () {
@@ -52,9 +57,11 @@ $.extend(Admin.prototype, {
         if ($('#tabs').css('left') === '-240px') {
             $('#tabs').css('left', 0)
             $('.tabs__bg').show()
+            admin.menuManualOpened = true
         } else {
             $('#tabs').css('left', '-240px')
             $('.tabs__bg').hide()
+            admin.menuManualOpened = false
         }
     },
     /**
@@ -157,6 +164,10 @@ $.extend(Admin.prototype, {
         $('#loadMsg').text(Label.loadingLabel)
 
         if ($('#tabsPanel_' + tab).length === 1) {
+            if (admin.menuManualOpened) {
+                admin.toggleMenu()
+            }
+
             if ($('#tabsPanel_' + tab).html().replace(/\s/g, '') === '') {
                 // 还未加载 HTML
                 $('#tabsPanel_' + tab).load('admin-' + tab + '.do', function () {
