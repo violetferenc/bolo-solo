@@ -90,14 +90,24 @@
                     </div>
                     <nav class="mobile-fit-control hide">
                         <ul id="menu-new" class="menu">
-                            <li><a href="${servePath}/"><span class="faa-parent animated-hover"><i
-                                                class="fa fa-home faa-horizontal" aria-hidden="true"></i> 首页</span></a></li>
-                            <li><a href="${servePath}/links.html"><span class="faa-parent animated-hover"><i
-                                                class="fa fa-link faa-horizontal" aria-hidden="true"></i> 友链</span></a></li>
-                            <li><a href="${servePath}/tags.html"><span class="faa-parent animated-hover"><i
-                                                class="fa fa-tag faa-horizontal" aria-hidden="true"></i> 标签</span></a></li>
-                            <li><a href="${servePath}/archives.html"><span class="faa-parent animated-hover"><i
-                                                class="fa fa-archive faa-horizontal" aria-hidden="true"></i> 归档</span></a></li>
+                            <li>
+                                <a href="${servePath}/"><span class="faa-parent animated-hover">
+                                        <i class="fa fa-home faa-horizontal" aria-hidden="true"></i> 首页</span></a>
+                            </li>
+                            <#-- 隐藏友链
+                            <li>
+                                <a href="${servePath}/links.html"><span class="faa-parent animated-hover"><i
+                                                class="fa fa-link faa-horizontal" aria-hidden="true"></i> 友链</span></a>
+                            </li>
+                            -->
+                            <li>
+                                <a href="${servePath}/tags.html"><span class="faa-parent animated-hover"><i
+                                                class="fa fa-tag faa-horizontal" aria-hidden="true"></i> 标签</span></a>
+                            </li>
+                            <li>
+                                <a href="${servePath}/archives.html"><span class="faa-parent animated-hover"><i
+                                                class="fa fa-archive faa-horizontal" aria-hidden="true"></i> 归档</span></a>
+                            </li>
                             <#list pageNavigations as page>
                                 <li><a href="${page.pagePermalink}" target="${page.pageOpenTarget}"><span
                                                 class="faa-parent animated-hover">
@@ -136,10 +146,19 @@
                 </#if>
 
             </div>
+            <#-- 隐藏原来的搜索框
             <#if interactive == "on">
-            <div class="searchbox">
-                <i class="iconfont js-toggle-search iconsearch icon-search"></i>
-            </div>
+                <div class="searchbox">
+                    <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+                </div>
+            </#if>
+            -->
+            <#if interactive == "on">
+                <div class="searchbox">
+                    <a href="${servePath}/search" title="搜索" style="color: #666666de;">
+                        <i class="iconfont iconsearch icon-search" style="font-size: 27px"></i>
+                    </a>
+                </div>
             </#if>
         </div>
     </header>
