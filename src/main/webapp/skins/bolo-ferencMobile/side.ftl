@@ -65,7 +65,7 @@
                     <#if page.pageIcon?contains("/")>
                         <img class="mdui-list-item-icon" src="${page.pageIcon}">
                     <#else>
-                        <i class="mdui-list-item-icon iconfont solo-${page.pageIcon}"></i>
+                        <i class="mdui-list-item-icon fa fa-${page.pageIcon} faa-horizontal" aria-hidden="true" style="margin-right: 5px"></i>
                     </#if>
                     <div class="mdui-list-item-content">${page.pageTitle}</div>
                 </a>
@@ -102,13 +102,32 @@
             </div>
         </div>
 
-        <div class="nexmoe-widget-wrap">
-            <h3 class="nexmoe-widget-title">社交按钮</h3>
-            <div class="nexmoe-widget nexmoe-social">
-                <#include "../../common-template/macro-user_site.ftl"/>
-                <@userSite dir=""></@userSite>
-            </div>
-        </div>
+        <#if usite??>
+            <#assign validAccountNum = 0/>
+            <#assign usiteKeys = [
+                "usiteBehance", "usiteCodePen", "usiteDribbble", "usiteFacebook",
+                "usiteGitHub", "usiteInstagram", "usiteLinkedIn", "usiteMedium",
+                "usiteQQ", "usiteQQMusic", "usiteStackOverflow", "usiteSteam",
+                "usiteTelegram", "usiteTwitter", "usiteUserId", "usiteWYMusic",
+                "usiteWeChat", "usiteWeiBo", "usiteZhiHu"
+            ]/>
+            <#list usiteKeys as usiteKey>
+                <#if usite.get("${usiteKey}") != ''>
+                    <#assign validAccountNum = validAccountNum + 1/>
+                </#if>
+            </#list>
+
+             <#-- 当有效的联系方式大于1时显示社交按钮 -->
+            <#if validAccountNum gt 0>
+                <div class="nexmoe-widget-wrap">
+                    <h3 class="nexmoe-widget-title">社交按钮</h3>
+                    <div class="nexmoe-widget nexmoe-social">
+                        <#include "../../common-template/macro-user_site.ftl"/>
+                        <@userSite dir=""></@userSite>
+                    </div>
+                </div>
+            </#if>
+        </#if>
 
         <#if noticeBoard?? && 'bulletin'== customVars.key0>
             <div class="nexmoe-widget-wrap">
@@ -185,8 +204,5 @@
     <div class="nexmoe-copyright">
         © ${year} <a href="${servePath}">${blogTitle}</a> <br/>
         ${footerContent} <br>
-        Powered by <a href="https://github.com/adlered/bolo-solo" target="_blank">Bolo</a> <br>
-        Theme <a rel="friend" href="https://github.com/InkDP/solo-nexmoe" target="_blank">${skinDirName}</a>
-        by <a rel="friend" href="https://www.inkdp.cn" target="_blank">InkDP</a>
     </div>
 </div>
