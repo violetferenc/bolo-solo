@@ -28,9 +28,8 @@
                style="background-image: url('https://ftp.stackoverflow.wiki/bolo/moezx/cdn/img/Sakura/images/sakura.svg');">
             </p>
             <p style="font-family: 'Ubuntu', sans-serif;">
-                <span style="color: #666666;">Crafted with <i class='fa fa-heart animated' style="color: #e74c3c;"></i> by <a rel="me" href="https://github.com/adlered/bolo-solo" target="_blank" style="color: #000000;text-decoration:none;">菠萝博客</a> X <a rel="me" href="https://hello.2heng.xin/@mashiro" target="_blank" style="color: #000000;text-decoration:none;">Mashiro</a></span>
+                <span style="color: #666666;">Crafted with <i class='fa fa-heart animated' style="color: #e74c3c;"></i> by <a rel="me" href="https://github.com/violetferenc/bolo-solo" target="_blank" style="color: #000000;text-decoration:none;">ferenc</a></span>
             </p>
-            Theme <a rel="friend" href="https://github.com/mashirozx/Sakura" target="_blank">${skinDirName}</a><br>
             © ${year} <a href="${servePath}">${blogTitle}</a><br>
             <span>${viewLabel}</span>
             ${statistic.statisticBlogViewCount}
