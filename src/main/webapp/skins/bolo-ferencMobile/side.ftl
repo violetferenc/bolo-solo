@@ -44,11 +44,13 @@
                 <i class="mdui-list-item-icon iconfont solo-home"></i>
                 <div class="mdui-list-item-content">回到首页</div>
             </a>
+            <#-- 隐藏友情链接
             <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="${servePath}/links.html"
                title="${linkLabel} - ${blogTitle}">
                 <i class="mdui-list-item-icon iconfont solo-about"></i>
                 <div class="mdui-list-item-content">${linkLabel}</div>
             </a>
+            -->
             <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="${servePath}/tags.html"
                title="${tagLabel} - ${blogTitle}">
                 <i class="mdui-list-item-icon iconfont solo-tags"></i>
