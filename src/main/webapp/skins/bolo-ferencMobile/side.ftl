@@ -17,7 +17,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 -->
-<div class="nexmoe-drawer mdui-drawer" id="drawer">
+<div class="nexmoe-drawer mdui-drawer" id="drawer" style="z-index: 999">
     <div class="nexmoe-avatar mdui-ripple">
         <a href="${servePath}/" title="${blogTitle}">
             <img src="${adminUser.userAvatar}" title="${blogTitle}" alt="${userName}"></a>
@@ -57,9 +57,9 @@
                 <div class="mdui-list-item-content">${tagLabel}</div>
             </a>
             <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="${servePath}/archives.html"
-               title="${archiveLabel} - ${blogTitle}">
+               title="${timeLineLabel} - ${blogTitle}">
                 <i class="mdui-list-item-icon iconfont solo-list"></i>
-                <div class="mdui-list-item-content">时间线</div>
+                <div class="mdui-list-item-content">${timeLineLabel}</div>
             </a>
             <#list pageNavigations as page>
                 <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="${page.pagePermalink}"

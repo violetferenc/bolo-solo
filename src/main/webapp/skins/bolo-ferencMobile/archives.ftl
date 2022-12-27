@@ -21,12 +21,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <@head title="${linkLabel} - ${blogTitle}">
+    <@head title="${timeLineLabel} - ${blogTitle}">
         <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         <link rel="stylesheet" href="${staticServePath}/js/lib/mdui.min.css">
         <link rel="stylesheet" href="${staticServePath}/js/lib/atom-one-dark.css">
-        <link rel="stylesheet"
-              href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="https://ftp.stackoverflow.wiki/bolo/start/css/font-awesome.min.css">
     </@head>
 </head>
 <body class="mdui-drawer-body-left mdui-loaded">
@@ -57,7 +57,7 @@
                     margin-right: 11px;
                     border-radius: 100%;
                     border: 3px solid #fff;
-                    z-index: 100;
+                    z-index: 1;
                     position: relative;
                 }
 
