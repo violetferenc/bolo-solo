@@ -28,8 +28,8 @@
         <div id="content" class="site-content">
             <div id="primary" class="content-area">
                 <header class="page-header">
-                    <h1 class="cat-title">归档</h1>
-                    <span class="cat-des"><p>Archives</p> </span>
+                    <h1 class="cat-title">${timeLineLabel}</h1>
+                    <span class="cat-des"><p>Timeline</p> </span>
                     <br>
                     ${archiveDates?size} ${cntMonthLabel}
                     <br>

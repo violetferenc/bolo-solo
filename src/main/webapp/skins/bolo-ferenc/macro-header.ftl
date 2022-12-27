@@ -106,7 +106,7 @@
                             </li>
                             <li>
                                 <a href="${servePath}/archives.html"><span class="faa-parent animated-hover"><i
-                                                class="fa fa-archive faa-horizontal" aria-hidden="true"></i> 归档</span></a>
+                                                class="fa fa-list faa-horizontal" aria-hidden="true"></i> ${timeLineLabel}</span></a>
                             </li>
                             <#list pageNavigations as page>
                                 <li><a href="${page.pagePermalink}" target="${page.pageOpenTarget}"><span
