@@ -23,7 +23,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--
     <link href="https://ftp.stackoverflow.wiki/bolo/start/css/font.css" rel="stylesheet" />
+    -->
     <link rel="stylesheet" href="https://ftp.stackoverflow.wiki/bolo/start/css/font-awesome.min.css" />
     <link href="https://ftp.stackoverflow.wiki/bolo/start/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://ftp.stackoverflow.wiki/bolo/start/css/now-ui-kit.css?v=1.1.0" rel="stylesheet" />
@@ -129,6 +131,7 @@
     </#if>
     <br><br><br><br>
 </div>
+<!-- 隐藏Powered by信息
 <div class="navbar-nav fixed-bottom navbar-transparent" style="color: white;">
     <footer class="footer">
         <div class="container">
@@ -138,6 +141,7 @@
         </div>
     </footer>
 </div>
+-->
 </body>
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/core/popper.min.js" type="text/javascript"></script>
@@ -146,5 +150,7 @@
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/plugins/nouislider.min.js" type="text/javascript"></script>
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/plugins/jquery.sharrre.js" type="text/javascript"></script>
+<!-- 去除引用，避免一直加载不到导致Ipad Safari一直卡住无法显示页面
 <script src="https://ftp.stackoverflow.wiki/bolo/start/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+-->
 </html>
