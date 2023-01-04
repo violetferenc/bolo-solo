@@ -26,8 +26,8 @@
     <@head title="${article.articleTitle} - ${blogTitle}" description="${article.articleAbstract?html}">
         <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         <link rel="stylesheet" href="${staticServePath}/js/lib/mdui.min.css">
-        <link rel="stylesheet"
-              href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="https://ftp.stackoverflow.wiki/bolo/start/css/font-awesome.min.css">
     </@head>
 </head>
 <body class="mdui-drawer-body-left mdui-loaded">
@@ -65,8 +65,11 @@
                                    href="${servePath}/category/${articleCategory.categoryURI}">${articleCategory.categoryTitle}</a>
                                 </span>
                             </#if>
-                        </#if><span><a class="nexmoefont iconfont solo-tag -link"
-                                       href="${servePath}/tags/${articleTag?url('UTF-8')}">${articleTag}</a></span>
+                        </#if>
+                        <span>
+                            <a class="nexmoefont iconfont solo-tag -link"
+                                       href="${servePath}/tags/${articleTag?url('UTF-8')}">${articleTag}</a>
+                        </span>
                     </#list>
 
                 </div>

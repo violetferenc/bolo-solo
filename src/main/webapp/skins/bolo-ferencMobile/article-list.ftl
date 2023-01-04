@@ -55,10 +55,12 @@
                 </#if>
 
                 <#list article.articleTags?split(",") as articleTag>
-                <span>
-                    <a class="nexmoefont iconfont solo-tag -link"
-                       href="${servePath}/tags/${articleTag?url('UTF-8')}">${articleTag}</a>
-                </span>
+                    <#if articleTag != "待分类">
+                        <span>
+                            <a class="nexmoefont iconfont solo-tag -link"
+                               href="${servePath}/tags/${articleTag?url('UTF-8')}">${articleTag}</a>
+                        </span>
+                    </#if>
                 </#list>
 
             </div>

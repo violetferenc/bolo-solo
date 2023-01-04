@@ -25,8 +25,8 @@
         <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/base.css?${staticResourceVersion}"/>
         <link rel="stylesheet" href="${staticServePath}/js/lib/mdui.min.css">
         <link rel="stylesheet" href="${staticServePath}/js/lib/atom-one-dark.css">
-        <link rel="stylesheet"
-              href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="${staticServePath}/skins/${skinDirName}/css/font-icon.css?${staticResourceVersion}">
+        <link rel="stylesheet" href="https://ftp.stackoverflow.wiki/bolo/start/css/font-awesome.min.css">
     </@head>
 </head>
 <body class="mdui-drawer-body-left mdui-loaded">
