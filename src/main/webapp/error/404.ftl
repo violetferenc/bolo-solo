@@ -22,8 +22,8 @@
 <#include "../common-template/macro-common_page.ftl">
 
 <@commonPage "404 页面未找到">
-<h2>404 页面未找到!</h2>
-<img class="img-error" src="${staticServePath}/images/404.gif" title="404" alt="404 Not Found!"/>
+<h2 style="display: none">404 页面未找到!</h2>
+<img class="img-error" src="${staticServePath}/images/404.png" title="404" alt="404 Not Found!"/>
 <div class="a-error">
     <a href="${loginURL}">管理登录</a> | <a href="${servePath}">返回主页</a>
 </div>

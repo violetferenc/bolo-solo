@@ -40,11 +40,13 @@
             </div>
         </div>
     </div>
+    <#-- 隐藏页脚
     <div class="footerWrapper">
         <div class="footer">
             Powered by <a href="https://github.com/adlered/bolo-solo" target="_blank">Bolo</a> ${boloVersion}
         </div>
     </div>
+    -->
 </div>
 </body>
 </html>
