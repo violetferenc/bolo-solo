@@ -42,12 +42,6 @@
         </div>
     </div>
     <div>
-        <label>${tags1WithTips1Label}</label>
-        <div class="tag__select">
-            <input id="tag" type="text"/>
-        </div>
-    </div>
-    <div>
         <label>${category1Label}</label>
         <select id="categorySelector">
             <option value="">无分类</option>
@@ -55,6 +49,12 @@
                 <option value="${category.oId}">${category.categoryTitle} (${category.categoryPublishedArticleCount})</option>
             </#list>
         </select>
+    </div>
+    <div>
+        <label>${tags1WithTips1Label}</label>
+        <div class="tag__select">
+            <input id="tag" type="text"/>
+        </div>
     </div>
     <div>
         <label>${createDateLabel}</label>
@@ -87,11 +87,11 @@
         <div class="fn__right article-commentable__panel">
             <label class="checkbox">
                 <input type="checkbox" id="articleCommentable" checked />
-                ${allowCommentLabel}
+                &nbsp;${allowCommentLabel}
             </label>
             &nbsp;
             <#if b3logEnabled>
-            <span id="postToCommunityPanel">
+                <span id="postToCommunityPanel"></span>
             <#else>
             <span id="postToCommunityPanel" style="display: none">
             </#if>
