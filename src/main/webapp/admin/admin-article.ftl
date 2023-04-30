@@ -46,7 +46,7 @@
         <select id="categorySelector">
             <option value="">无分类</option>
             <#list categories as category>
-                <option value="${category.oId}">${category.categoryTitle} (${category.categoryPublishedArticleCount})</option>
+                <option value="${category.oId}">${category.categoryTitle} <#-- 隐藏计数统计 (${category.categoryPublishedArticleCount})--></option>
             </#list>
         </select>
     </div>
